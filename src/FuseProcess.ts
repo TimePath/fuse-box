@@ -39,7 +39,7 @@ export class FuseProcess {
 					else {
 						exps = getMainExport(cached.exports);
 						if (exps) {
-							closePromise = exps.close ? cached.close() : //if a `close` function is exported by the bundle
+							closePromise = exps.close ? exps.close() : //if a `close` function is exported by the bundle
 								exps.default && exps.default.close ?
 									exps.default.close() : //if a `close` function is exported by the default export
 									console.warn(`Bundle ${this.bundle.name} doesn't export a close() function and no close was given`);
